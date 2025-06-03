@@ -97,12 +97,13 @@
         </form>
 
         {% if resultado %}
-        <div class="resultado">
-            <p>💰 Preço de Venda Ideal: R$ {{ resultado.preco_venda }}</p>
-            <p>📈 Lucro Líquido: R$ {{ resultado.lucro_liquido }}</p>
-            <p>📊 Margem Líquida: {{ resultado.margem_liquida }}%</p>
-        </div>
-        {% endif %}
+<div class="resultado">
+    <p>💰 Preço de Venda Ideal: R$ {{ resultado.preco_venda }}</p>
+    <p>🧾 Custo da Venda: R$ {{ resultado.custo_da_venda }}</p>
+    <p>📈 Lucro Líquido: R$ {{ resultado.lucro_liquido }}</p>
+    <p>📊 Margem Líquida: {{ resultado.margem_liquida }}%</p>
+</div>
+{% endif %}
     </div>
 </body>
 </html>
