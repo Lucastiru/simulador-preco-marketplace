@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Simulador de Preço</title>
+</head>
+<body>
+    <h1>Simulador de Preço para Marketplace</h1>
+    <form method="POST">
+        <label>Custo do Produto (R$):</label><input name="custo"><br>
+        <label>Imposto (%):</label><input name="imposto"><br>
+        <label>Embalagem (R$):</label><input name="embalagem"><br>
+        <label>Frete (R$):</label><input name="frete"><br>
+        <label>Comissão (%):</label><input name="comissao"><br>
+        <label>Margem Desejada (%):</label><input name="margem"><br>
+        <button type="submit">Calcular</button>
+    </form>
+
+    {% if resultado %}
+        <h2>Resultado:</h2>
+        <p>Preço de Venda Ideal: R$ {{ resultado.preco_venda }}</p>
+        <p>Lucro Líquido: R$ {{ resultado.lucro_liquido }}</p>
+        <p>Margem Líquida: {{ resultado.margem_liquida }}%</p>
+    {% endif %}
+</body>
+</html>
