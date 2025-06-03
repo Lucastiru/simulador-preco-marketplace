@@ -3,24 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <title>Simulador de Preço</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: white;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .resultado {
+            margin-top: 25px;
+            padding: 15px;
+            background: #e7f4e4;
+            border-left: 5px solid #28a745;
+            border-radius: 6px;
+        }
+
+        .resultado p {
+            margin: 5px 0;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
-    <h1>Simulador de Preço para Marketplace</h1>
-    <form method="POST">
-        <label>Custo do Produto (R$):</label><input name="custo"><br>
-        <label>Imposto (%):</label><input name="imposto"><br>
-        <label>Embalagem (R$):</label><input name="embalagem"><br>
-        <label>Frete (R$):</label><input name="frete"><br>
-        <label>Comissão (%):</label><input name="comissao"><br>
-        <label>Margem Desejada (%):</label><input name="margem"><br>
-        <button type="submit">Calcular</button>
-    </form>
+    <div class="container">
+        <h1>Simulador de Preço para Marketplace</h1>
+        <form method="POST">
+            <label>Custo do Produto (R$):</label>
+            <input name="custo" type="number" step="0.01" required>
 
-    {% if resultado %}
-        <h2>Resultado:</h2>
-        <p>Preço de Venda Ideal: R$ {{ resultado.preco_venda }}</p>
-        <p>Lucro Líquido: R$ {{ resultado.lucro_liquido }}</p>
-        <p>Margem Líquida: {{ resultado.margem_liquida }}%</p>
-    {% endif %}
+            <label>Imposto (%):</label>
+            <input name="imposto" type="number" step="0.01" required>
+
+            <label>Embalagem (R$):</label>
+            <input name="embalagem" type="number" step="0.01" required>
+
+            <label>Frete (R$):</label>
+            <input name="frete" type="number" step="0.01" required>
+
+            <label>Comissão (%):</label>
+            <input name="comissao" type="number" step="0.01" required>
+
+            <label>Margem Desejada (%):</label>
+            <input name="margem" type="number" step="0.01" required>
+
+            <button type="submit">Calcular</button>
+        </form>
+
+        {% if resultado %}
+        <div class="resultado">
+            <p>💰 Preço de Venda Ideal: R$ {{ resultado.preco_venda }}</p>
+            <p>📈 Lucro Líquido: R$ {{ resultado.lucro_liquido }}</p>
+            <p>📊 Margem Líquida: {{ resultado.margem_liquida }}%</p>
+        </div>
+        {% endif %}
+    </div>
 </body>
 </html>
